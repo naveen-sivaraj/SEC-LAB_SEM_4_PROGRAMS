@@ -1,0 +1,40 @@
+create table employee(empno umber primary key,empname varchar(20),designation varchar(30),gender varchar(20),age number,doj date,salary number);
+
+desc employee;
+
+insert into employee values(&empno,'&empname','&desigination','&gender','&age','&doj',&salary);
+
+select *from employee;
+
+select *from employee where salary>3000;
+
+select *from employee where age between 25 and 30;
+
+select *from employee where empno=103;
+
+
+select *from employee where not salary <30000;
+
+select *from employee where desigination='manager' or designation ='admin';
+
+select * from employee order by empno;
+
+select * from employee order by empno desc;
+
+select * from employee where salary>30000 union select * from employee where age between 25
+and 30;
+
+select * from employee where salary>30000 union all select * from employee where age between
+25 and 30;
+
+select * from employee where salary>30000 intersect select * from employee where age between
+25 and 30;
+
+select * from employee where salary>30000 minus select * from employee where age between 25
+and 30;
+
+alter table employee     ;
+update table employee  ;
+rollback;
+ commit;
+exit;

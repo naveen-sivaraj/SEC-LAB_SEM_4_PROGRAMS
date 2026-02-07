@@ -1,0 +1,29 @@
+ create table EMP(EMPNO number(4)primary key,Ename varchar(10),JOB varchar(9),MGR number(4),Hiredate date,SAL number(7,2),Com Number(7,2),Deptno number(2));
+
+desc emp;
+
+
+insert into EMP values(7345,'Raghul','Student',7925,'22-Dec-2022',900,null,40);
+ insert into EMP values(7851,'Rajish','Student',4000,'15-May-2023',700,null,50);
+ insert into EMP values(7846,'Naveen','Student',5000,'23-12-2023',400,null,30);
+
+
+insert into emp values(&EMPNO,'&ENAME','&JOB','&HIREDATE',&SAL,&COMM,&DEPTNO);
+select *from emp;
+
+select *from tab;
+
+SELECT * FROM EMP;
+
+alter table employee     ;
+update table employee  ;
+
+rollback;
+savepoint a;
+commit;
+
+exit;
+
+
+
+show user;

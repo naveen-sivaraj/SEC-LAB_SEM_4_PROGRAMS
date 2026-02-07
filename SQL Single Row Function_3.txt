@@ -1,0 +1,61 @@
+ drop table emp;
+ create table emp as (select * from scott.emp);
+select * from emp;
+
+ set lines 100
+ set pages 1000
+
+select * from emp ;
+
+select ename,lower(ename),initcap(ename) from emp;
+
+select ename,job,concat(ename,job) from emp;
+
+ select length('Rakshan') from dual;
+
+
+
+ select sysdate from dual;
+select empno,ename,sal,round(sal * 1.15, 0) "New Salary" FROM emp;
+SELECT ENAME,INITCAP(ENAME),LENGTH(ENAME) from EMP;
+SELECT ENAME,HIREDATE,TRUNC(MONTHS_BETWEEN(SYSDATE,HIREDATE))
+"MONTHS_WORKED" FROM EMP ORDER BY
+MONTHS_BETWEEN(SYSDATE,HIREDATE);
+
+
+
+select hiredate,sysdate-hiredate from emp;
+
+select sysdate-to_Date('25-sep-2006')from dual;
+
+ select months_between(sysdate,to_date('25-sep-2006')) from dual;
+
+ select months_between(sysdate,to_date('25-sep-2006'))/12 from dual;
+
+ select to_char(to_Date('25-sep-2006'),'Day') from dual;
+
+ select to_char(sysdate,'HH24:mi;ss')from dual;
+
+
+ select empno,ename,sal,round(sal+(sal*0.15)) from emp;
+
+select ename,hiredate,trunc(months_between(sysdate,hiredate))"Months_worked" from emp;
+
+
+ select count(*) from emp;
+
+select count(ename),count(comm) from emp;
+
+ select max(sal),min(sal),avg(sal),sum(sal) from emp;
+
+select count(*) from emp where deptno=10;
+ select count(*) from emp where deptno=20;
+ select count(*) from emp where deptno=30;
+
+ select deptno,count(*) from emp group by deptno;
+
+select deptno,count(*) from emp 
+group by deptno
+having count(*)>=4
+order by deptno;
+
