@@ -1,0 +1,25 @@
+create table library_master(accno number primary key,title varchar2(25),author varchar2(25),
+rate number);
+
+create table library_transaction(userid number,accno number references library_master(accno),
+date_of_issue date, date_of_return date);
+
+insert into library_master values(&accno,'&title','&author',&rate);
+
+select * from library_master;
+
+insert into library_transaction values(&userid,&accno,'&date_of_issue','&date_of_return');
+
+select * from library_transaction;
+
+set linesize 75
+Ttitle center “LIBRARY MANAGEMENT' skip 1-
+>center ******************
+column accno heading 'ACCOUNT NUMBER'
+column title heading 'BOOK_NAME'
+column date_of_issue heading 'DATE_OF_ISSUE'
+ column date_of_retrun heading 'DATE_OF_RETURN'
+set underline-
+break on row skip1
+ select m.accno,m.title,t.date_of_issue from library_masterm,library_transaction t
+where m.accno=t.accno and date_of_return='24-aug-16';
