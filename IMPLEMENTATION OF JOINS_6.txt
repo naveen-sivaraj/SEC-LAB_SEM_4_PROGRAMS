@@ -1,0 +1,72 @@
+ CREATE TABLE Sailors (        
+ sid     NUMBER       PRIMARY KEY, 
+  sname   VARCHAR2(14) NOT NULL,       
+ rating  NUMBER,  age     NUMBER   );
+
+ CREATE TABLE Boats (        
+ bid     NUMBER       PRIMARY KEY,         
+bname   VARCHAR2(15) NOT NULL,       
+color   VARCHAR2(10)    ); 
+
+ CREATE TABLE Reserves (        
+ sid     NUMBER,        
+ bid     NUMBER,         
+day     DATE,         
+PRIMARY KEY (sid, bid, day),         
+FOREIGN KEY (sid) REFERENCES Sailors(sid),         
+FOREIGN KEY (bid) REFERENCES Boats(bid)  ); 
+
+INSERT INTO Boats (bid, bname, color) VALUES (101, 'Ocean Queen', 'Red');
+
+INSERT INTO Boats (bid, bname, color) VALUES (102, 'Sea Rider', 'Blue');
+
+INSERT INTO Boats (bid, bname, color) VALUES (103, 'Wave Master', 'Green');
+
+INSERT INTO Boats (bid, bname, color) VALUES (104, 'Sunset Cruiser', 'Yellow');
+
+INSERT INTO Boats (bid, bname, color) VALUES (105, 'Storm Runner', 'Black');
+
+INSERT INTO Reserves (sid, bid, day)
+2 VALUES (1, 101, TO_DATE('2025-01-10', 'YYYY-MM-DD'));
+
+INSERT INTO Reserves (sid, bid, day)
+2 VALUES (1, 102, TO_DATE('2025-01-12', 'YYYY-MM-DD'));
+
+INSERT INTO Reserves (sid, bid, day)
+2 VALUES (2, 103, TO_DATE('2025-01-11', 'YYYY-MM-DD'));
+
+INSERT INTO Reserves (sid, bid, day)
+2 VALUES (3, 101, TO_DATE('2025-01-15', 'YYYY-MM-DD'));
+
+commit;
+
+select * from SAILORS;
+
+select * from Boats;
+
+select * from RESERVES;
+
+SELECT S.sid, S.sname, B.bname, R.day
+2 FROM Sailors S
+3 INNER JOIN Reserves R ON S.sid = R.sid
+4 INNER JOIN Boats B ON B.bid = R.bid;
+
+SELECT S.sid, S.sname, B.bname, R.day
+2 FROM Sailors S
+3 LEFT JOIN Reserves R ON S.sid = R.sid
+4 LEFT JOIN Boats B ON B.bid = R.bid;
+
+SELECT S.sname, B.bname, R.day
+2 FROM Sailors S
+3 RIGHT JOIN Reserves R ON S.sid = R.sid
+4 RIGHT JOIN Boats B ON B.bid = R.bid;
+
+SELECT S.sid, S.sname, B.bid, B.bname, R.day
+2 FROM Sailors S
+3 FULL OUTER JOIN Reserves R ON S.sid = R.sid
+4 FULL OUTER JOIN Boats B ON B.bid = R.bid;
+
+SELECT sid, S.sname, R.day
+2 FROM Sailors S
+3 NATURAL JOIN Reserves R;
+

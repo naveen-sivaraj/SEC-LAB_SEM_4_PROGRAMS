@@ -1,0 +1,33 @@
+REVERSE  STRING
+
+DECLARE
+string1 VARCHAR2(100) := '&String1';
+string2 VARCHAR2(100) := '';
+i number;
+BEGIN
+FOR i IN REVERSE 1 .. LENGTH(string1) LOOP
+string2 := string2 || SUBSTR(string1, i, 1);
+END LOOP;
+DBMS_OUTPUT.PUT_LINE('String Input: ' || string1);
+DBMS_OUTPUT.PUT_LINE('String Output: ' || string2);
+END;
+
+Fibonacci Series
+
+DECLARE
+n NUMBER := 10;
+a NUMBER := 0;
+b NUMBER := 1;
+c NUMBER;
+BEGIN
+DBMS_OUTPUT.PUT_LINE('Fibonacci Series (First ' || n || ' Terms):');
+DBMS_OUTPUT.PUT_LINE(a);
+DBMS_OUTPUT.PUT_LINE(b);
+FOR i IN 3 .. n LOOP
+c := a + b;
+DBMS_OUTPUT.PUT_LINE(c);
+a := b;
+b := c;
+END LOOP;
+END;
+
